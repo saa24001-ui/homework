@@ -1,0 +1,232 @@
+<!-- ... existing code ... -->
+    function showToast(msg, isError = true) {
+      const toast = document.getElementById("toast-message");
+      if (!toast) return;
+      toast.textContent = msg;
+      toast.className = `fixed top-4 left-1/2 -translate-x-1/2 z-50 ${isError ? 'bg-rose-600 border-rose-300' : 'bg-emerald-600 border-emerald-300'} text-white font-bold px-4 py-3 rounded-2xl shadow-2xl border-2 text-xs sm:text-sm text-center max-w-sm transition-all duration-300`;
+      toast.classList.remove("hidden");
+      setTimeout(() => {
+        toast.classList.add("hidden");
+      }, 8000);
+    }
+
+    /* ===================================================
+<!-- ... existing code ... -->
+    // Googleログイン実行
+    loginBtn.addEventListener("click", async () => {
+      sound.init();
+      if (!auth) {
+        showToast("Firebaseが初期化されていません", true);
+        return;
+      }
+      try {
+        const provider = new GoogleAuthProvider();
+        provider.setCustomParameters({ prompt: 'select_account' });
+        await signInWithPopup(auth, provider);
+        showToast("Googleログインに成功しました！", false);
+      } catch (err) {
+        console.error("Login failed:", err);
+        let msg = "Googleログインに失敗しました";
+        if (err.code === 'auth/popup-blocked') {
+          msg = "ポップアップがブロックされました。ブラウザ設定で許可してください。";
+        } else if (err.code === 'auth/unauthorized-domain') {
+          const currentDomain = window.location.hostname || "現在のドメイン";
+          msg = `【承認済みドメインエラー】Firebase Console に 「${currentDomain}」 を追加してください。`;
+        } else if (err.code === 'auth/operation-not-allowed') {
+          msg = "Firebase Console で Google ログインを有効化してください。";
+        } else if (err.message) {
+          msg += `: ${err.message}`;
+        }
+        showToast(msg, true);
+      }
+    });
+
+    logoutBtn.addEventListener("click", () => {
+<!-- ... existing code ... -->
+    // Firebase設定モーダル制御
+    const configBtn = document.getElementById("config-btn");
+    const configModal = document.getElementById("config-modal");
+    if (configBtn && configModal) {
+      configBtn.addEventListener("click", () => {
+        configModal.classList.remove("hidden");
+        document.getElementById("cfg-apiKey").value = savedConfig.apiKey || "";
+        document.getElementById("cfg-authDomain").value = savedConfig.authDomain || "";
+        document.getElementById("cfg-projectId").value = savedConfig.projectId || "";
+        
+        // 現在アクセス中のドメインを表示
+        const domainDisplay = document.getElementById("current-domain-display");
+        if (domainDisplay) {
+          domainDisplay.textContent = window.location.hostname || "localhost";
+        }
+      });
+    }
+
+    document.getElementById("close-config-btn").addEventListener("click", () => {
+<!-- ... existing code ... -->
+      <p class="text-xs text-slate-300 mb-3 leading-relaxed">
+        ご自身のFirebaseプロジェクトの設定情報を貼り付けると、Googleログインと全国ランキング機能が有効化されます。（空欄の場合はデモモード動作になります）
+      </p>
+
+      <div class="bg-slate-900 border border-slate-700 rounded-xl p-2.5 mb-3 text-left">
+        <div class="text-[10px] font-bold text-amber-400 mb-0.5">📍 現在アクセス中のドメイン (Firebaseへの追加が必要):</div>
+        <div id="current-domain-display" class="font-mono text-xs font-bold text-cyan-300 select-all break-all">---</div>
+      </div>
+
+      <div class="space-y-2 text-xs mb-4">
+        <div>
+          <label class="block text-slate-400 mb-1">API Key</label>
+<!-- ... existing code ... --><!-- ... existing code ... -->
+    function showToast(msg, isError = true) {
+      const toast = document.getElementById("toast-message");
+      if (!toast) return;
+      toast.textContent = msg;
+      toast.className = `fixed top-4 left-1/2 -translate-x-1/2 z-50 ${isError ? 'bg-rose-600 border-rose-300' : 'bg-emerald-600 border-emerald-300'} text-white font-bold px-4 py-3 rounded-2xl shadow-2xl border-2 text-xs sm:text-sm text-center max-w-sm transition-all duration-300`;
+      toast.classList.remove("hidden");
+      setTimeout(() => {
+        toast.classList.add("hidden");
+      }, 8000);
+    }
+
+    /* ===================================================
+<!-- ... existing code ... -->
+    // Googleログイン実行
+    loginBtn.addEventListener("click", async () => {
+      sound.init();
+      if (!auth) {
+        showToast("Firebaseが初期化されていません", true);
+        return;
+      }
+      try {
+        const provider = new GoogleAuthProvider();
+        provider.setCustomParameters({ prompt: 'select_account' });
+        await signInWithPopup(auth, provider);
+        showToast("Googleログインに成功しました！", false);
+      } catch (err) {
+        console.error("Login failed:", err);
+        let msg = "Googleログインに失敗しました";
+        if (err.code === 'auth/popup-blocked') {
+          msg = "ポップアップがブロックされました。ブラウザ設定で許可してください。";
+        } else if (err.code === 'auth/unauthorized-domain') {
+          const currentDomain = window.location.hostname || "現在のドメイン";
+          msg = `【承認済みドメインエラー】Firebase Console に 「${currentDomain}」 を追加してください。`;
+        } else if (err.code === 'auth/operation-not-allowed') {
+          msg = "Firebase Console で Google ログインを有効化してください。";
+        } else if (err.message) {
+          msg += `: ${err.message}`;
+        }
+        showToast(msg, true);
+      }
+    });
+
+    logoutBtn.addEventListener("click", () => {
+<!-- ... existing code ... -->
+    // Firebase設定モーダル制御
+    const configBtn = document.getElementById("config-btn");
+    const configModal = document.getElementById("config-modal");
+    if (configBtn && configModal) {
+      configBtn.addEventListener("click", () => {
+        configModal.classList.remove("hidden");
+        document.getElementById("cfg-apiKey").value = savedConfig.apiKey || "";
+        document.getElementById("cfg-authDomain").value = savedConfig.authDomain || "";
+        document.getElementById("cfg-projectId").value = savedConfig.projectId || "";
+        
+        // 現在アクセス中のドメインを表示
+        const domainDisplay = document.getElementById("current-domain-display");
+        if (domainDisplay) {
+          domainDisplay.textContent = window.location.hostname || "localhost";
+        }
+      });
+    }
+
+    document.getElementById("close-config-btn").addEventListener("click", () => {
+<!-- ... existing code ... -->
+      <p class="text-xs text-slate-300 mb-3 leading-relaxed">
+        ご自身のFirebaseプロジェクトの設定情報を貼り付けると、Googleログインと全国ランキング機能が有効化されます。（空欄の場合はデモモード動作になります）
+      </p>
+
+      <div class="bg-slate-900 border border-slate-700 rounded-xl p-2.5 mb-3 text-left">
+        <div class="text-[10px] font-bold text-amber-400 mb-0.5">📍 現在アクセス中のドメイン (Firebaseへの追加が必要):</div>
+        <div id="current-domain-display" class="font-mono text-xs font-bold text-cyan-300 select-all break-all">---</div>
+      </div>
+
+      <div class="space-y-2 text-xs mb-4">
+        <div>
+          <label class="block text-slate-400 mb-1">API Key</label>
+<!-- ... existing code ... --><!-- ... existing code ... -->
+    function showToast(msg, isError = true) {
+      const toast = document.getElementById("toast-message");
+      if (!toast) return;
+      toast.textContent = msg;
+      toast.className = `fixed top-4 left-1/2 -translate-x-1/2 z-50 ${isError ? 'bg-rose-600 border-rose-300' : 'bg-emerald-600 border-emerald-300'} text-white font-bold px-4 py-3 rounded-2xl shadow-2xl border-2 text-xs sm:text-sm text-center max-w-sm transition-all duration-300`;
+      toast.classList.remove("hidden");
+      setTimeout(() => {
+        toast.classList.add("hidden");
+      }, 8000);
+    }
+
+    /* ===================================================
+<!-- ... existing code ... -->
+    // Googleログイン実行
+    loginBtn.addEventListener("click", async () => {
+      sound.init();
+      if (!auth) {
+        showToast("Firebaseが初期化されていません", true);
+        return;
+      }
+      try {
+        const provider = new GoogleAuthProvider();
+        provider.setCustomParameters({ prompt: 'select_account' });
+        await signInWithPopup(auth, provider);
+        showToast("Googleログインに成功しました！", false);
+      } catch (err) {
+        console.error("Login failed:", err);
+        let msg = "Googleログインに失敗しました";
+        if (err.code === 'auth/popup-blocked') {
+          msg = "ポップアップがブロックされました。ブラウザ設定で許可してください。";
+        } else if (err.code === 'auth/unauthorized-domain') {
+          const currentDomain = window.location.hostname || "現在のドメイン";
+          msg = `【承認済みドメインエラー】Firebase Console に 「${currentDomain}」 を追加してください。`;
+        } else if (err.code === 'auth/operation-not-allowed') {
+          msg = "Firebase Console で Google ログインを有効化してください。";
+        } else if (err.message) {
+          msg += `: ${err.message}`;
+        }
+        showToast(msg, true);
+      }
+    });
+
+    logoutBtn.addEventListener("click", () => {
+<!-- ... existing code ... -->
+    // Firebase設定モーダル制御
+    const configBtn = document.getElementById("config-btn");
+    const configModal = document.getElementById("config-modal");
+    if (configBtn && configModal) {
+      configBtn.addEventListener("click", () => {
+        configModal.classList.remove("hidden");
+        document.getElementById("cfg-apiKey").value = savedConfig.apiKey || "";
+        document.getElementById("cfg-authDomain").value = savedConfig.authDomain || "";
+        document.getElementById("cfg-projectId").value = savedConfig.projectId || "";
+        
+        // 現在アクセス中のドメインを表示
+        const domainDisplay = document.getElementById("current-domain-display");
+        if (domainDisplay) {
+          domainDisplay.textContent = window.location.hostname || "localhost";
+        }
+      });
+    }
+
+    document.getElementById("close-config-btn").addEventListener("click", () => {
+<!-- ... existing code ... -->
+      <p class="text-xs text-slate-300 mb-3 leading-relaxed">
+        ご自身のFirebaseプロジェクトの設定情報を貼り付けると、Googleログインと全国ランキング機能が有効化されます。（空欄の場合はデモモード動作になります）
+      </p>
+
+      <div class="bg-slate-900 border border-slate-700 rounded-xl p-2.5 mb-3 text-left">
+        <div class="text-[10px] font-bold text-amber-400 mb-0.5">📍 現在アクセス中のドメイン (Firebaseへの追加が必要):</div>
+        <div id="current-domain-display" class="font-mono text-xs font-bold text-cyan-300 select-all break-all">---</div>
+      </div>
+
+      <div class="space-y-2 text-xs mb-4">
+        <div>
+          <label class="block text-slate-400 mb-1">API Key</label>
+<!-- ... existing code ... -->
